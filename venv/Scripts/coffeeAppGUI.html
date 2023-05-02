@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Espresso Counter</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h438C6wF/RTfQT25z6Kxy5g6p4U6Ic6RdvDlM" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="my-3">Espresso Counter</h1>
+            {% if error_message %}
+                <div class="alert alert-danger">{{ error_message }}</div>
+            {% endif %}
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <h2 class="mb-0">Number of Espresso terms:</h2>
+                    <h3>{{ len(matrix) }}</h3>
+                </div>
+                <div class="col-md-6">
+                    <form method="POST" action="/" class="form-inline">
+                        <div class="form-group mr-2">
+                            <label for="row1" class="mr-2">Row number to swap:</label>
+                            <input type="number" id="row1" name="row1" class="form-control" min="0" max="{{ len(matrix)-1 }}" required>
+                        </div>
+                        <div class="form-group mr-2">
+                            <label for="row2" class="mr-2">Swap with:</label>
+                            <input type="number" id="row2" name="row2" class="form-control" min="0" max="{{ len(matrix)-1 }}" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Swap Rows</button>
+                    </form>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Row</th>
+                            <th>Binary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in range(len(matrix))%}
+                        <tr>
+                            <td>{{i}}</td>
+                            <td>{{ matrix[i] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
