@@ -12,7 +12,10 @@ def espresso_counter(n, m):
     return matrix
 
 def swap_rows(matrix, row1, row2):
+    if row1 < 0 or row1 >= len(matrix) or row2 < 0 or row2 >= len(matrix):
+        raise ValueError("Invalid row indices.")
     matrix[row1], matrix[row2] = matrix[row2], matrix[row1]
+
 
 @app.route("/", methods=["GET", "POST"])
 def main():
