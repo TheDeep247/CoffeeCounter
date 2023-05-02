@@ -5,14 +5,23 @@
     </head>
     <body>
         <h1>Espresso Counter</h1>
+        {% if error_message %}
+            <p style="color: red">{{ error_message }}</p>
+        {% endif %}
         <form method="POST" action="/">
             <label for="n">Enter the number of bits:</label>
-            <input type="number" id="m" name="m">
+            <input type="number" id="n" name="n">
             <br>
             <label for="m">Enter the number of ones:</label>
             <input type="number" id="m" name="m">
             <br>
-            <input type="submit" value="Calulate">
+            <label for="row1">Enter the index of the first row to swap:</label>
+            <input type="number" id="row1" name="row1">
+            <br>
+            <label for="row2">Enter the index of the second row to swap:</label>
+            <input type="number" id="row2" name="row2">
+            <br>
+            <input type="submit" value="Calculate">
         </form>
     </body>
 </html>

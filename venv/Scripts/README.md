@@ -1,8 +1,10 @@
 # CoffeeCounter
-This Flask application defines a route ("/") with a GET method that renders the "input.html" template, and a POST method that calls the "espresso_counter" and "swap_rows" functions based on user input from a form in the "input.html" template, and then renders the "index.html" template with the updated matrix.
+This is a Flask web application that defines a few functions and routes to create an "Espresso Counter" application.
 
-The "espresso_counter" function generates all possible binary numbers of length "n" and counts the number of ones in each binary number. It returns a list of binary numbers that have "m" ones.
+The espresso_counter(n, m) function generates a matrix containing all binary strings of length n that have m ones. The swap_rows(matrix, row1, row2) function takes in a matrix and two row indices and swaps the two rows in the matrix.
 
-The "swap_rows" function takes a matrix (list of binary numbers) and two row indices to swap in place.
+The @app.route("/", methods=["GET", "POST"]) decorator defines the main route for the application. If the HTTP method is a POST request, the application tries to retrieve the input values from the submitted form, converts the values to integers, calls espresso_counter(n, m) to generate a matrix, swaps the rows specified by the user, and renders the template index.html with the generated matrix. If an error occurs, the application renders the template input.html with an error message.
 
-The GET method in the "/" route renders the "input.html" template, which contains a form with inputs for "n", "m", "row1", and "row2", as well as a submit button. When the form is submitted, the POST method in the "/" route is called. This method extracts the values of "n", "m", "row1", and "row2" from the form, calls the "espresso_counter" function to generate the matrix, calls the "swap_rows" function to swap the specified rows, and then renders the "index.html" template with the updated matrix.
+If the HTTP method is a GET request, the application simply renders the template input.html with the form for the user to enter their inputs.
+
+Finally, the if __name__ == "__main__" block runs the application in debug mode.
